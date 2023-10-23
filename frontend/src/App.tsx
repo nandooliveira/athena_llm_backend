@@ -49,10 +49,10 @@ function EventTimelineItem(event: Event) {
       <b>{formattedDate}:</b> {event.type}
       <p>{event.data.document.fileName}</p>
       {event.data.contentChanges?.map((change: any) => {
-            return (
-              <CodeSnippet language={event.data.document.languageId} code={change.text} />
-            );
-          })
+        return (
+          <CodeSnippet language={event.data.document.languageId} code={change.text} />
+        );
+      })
       }
       {event.type === "textDocument/inlineCompletionReceived"
         ?
@@ -85,7 +85,7 @@ function App() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/api/v1/events').then((response) => {
+    axios.get('http://localhost:8000/api/v1/events').then((response) => {
       setEvents(response.data.map((event: Event) => EventTimelineItem(event)));
     }).catch(error => {
       console.log(error)

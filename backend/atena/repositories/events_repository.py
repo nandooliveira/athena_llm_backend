@@ -1,5 +1,5 @@
-from bson import ObjectId
 from atena.repositories.repository import Repository
+from bson import ObjectId
 
 
 class EventsRepository(Repository):

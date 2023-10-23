@@ -1,8 +1,11 @@
+import os
+
 import pymongo
 
 
 class Repository:
-    DATABASE_URL = f"mongodb://localhost:27017/atena_db"
+    # DATABASE_URL = f"mongodb://localhost:27017/atena_db"
+    DATABASE_URL = os.environ.get("MONGO_URL")
     __mongo_db = None
 
     @staticmethod

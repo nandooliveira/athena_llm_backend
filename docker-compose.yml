@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  flask-app:
+    build: ./backend
+    ports:
+      - "8000:5000"
+    depends_on:
+      - react-app
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/atena_db
+
+  react-app:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
