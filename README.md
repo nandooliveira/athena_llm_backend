@@ -19,7 +19,7 @@ source venv/bin/activate
 ## Install the requirements
 
 ```bash
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 ```
 
 ## Start a mongodb on Docker

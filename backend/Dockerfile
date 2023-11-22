@@ -9,17 +9,14 @@ RUN apt update -y
 RUN apt install -y gcc python3-dev
 
 # Install dependencies from requirements.txt
-COPY requirements.txt .
+COPY ./requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 # RUN pip install --no-cache-dir gunicorn
 
 # Add the current directory to Docker image
-COPY .. .
-
-# Make port 5000 available to the world outside this container
-# EXPOSE 8000
+COPY . .
 
 # Run the application
 ENV FLASK_APP=app
-CMD ["python","app.py"]
+CMD ["flask", "--app", "app", "run", "-h", "0.0.0.0"]
